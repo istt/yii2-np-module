@@ -1,5 +1,5 @@
 {
-	"name": "istt/yii2-numberingplans-module",
+	"name": "istt/yii2-np-module",
 	"description": "Quick Reference tools for MCC and MNC values, used in operators",
 	"keywords": ["istt", "ndtrung", "yii", "mcc", "mnc", "country"],
 	"type": "yii2-module",
