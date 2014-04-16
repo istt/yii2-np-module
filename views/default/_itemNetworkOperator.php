@@ -5,7 +5,7 @@ use yii\widgets\DetailView;
 ?>
 <div class="network-operator-view">
 
-    <h1><small><?= \Yii::t('app', 'Network Operator'); ?>:</small> <?= Html::encode($this->title) ?></h1>
+    <h1><small><?= \Yii::t('np', 'Network Operator'); ?>:</small> <?= Html::encode($this->title) ?></h1>
 
 
     <?= DetailView::widget([

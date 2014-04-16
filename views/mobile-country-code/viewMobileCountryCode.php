@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mobile-country-code-view">
 
-    <h1><small><?= \Yii::t('app', 'Mobile Country Code'); ?>:</small> <?= Html::encode($this->title) ?></h1>
+    <h1><small><?= \Yii::t('np', 'Mobile Country Code'); ?>:</small> <?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a(Yii::t('np', 'Update'), ['update', 'country_id' => $model->country_id, 'mcc' => $model->mcc], ['class' => 'btn btn-primary']) ?>

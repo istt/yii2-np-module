@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="country-code-view">
 
-    <h1><small><?= \Yii::t('app', 'Country Code'); ?>:</small> <?= Html::encode($this->title) ?></h1>
+    <h1><small><?= \Yii::t('np', 'Country Code'); ?>:</small> <?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a(Yii::t('np', 'Update'), ['update', 'country_id' => $model->country_id, 'cc' => $model->cc], ['class' => 'btn btn-primary']) ?>

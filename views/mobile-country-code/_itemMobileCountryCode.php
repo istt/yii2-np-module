@@ -5,7 +5,7 @@ use yii\widgets\DetailView;
 ?>
 <div class="mobile-country-code-view">
 
-    <h1><small><?= \Yii::t('app', 'Mobile Country Code'); ?>:</small> <?= Html::encode($this->title) ?></h1>
+    <h1><small><?= \Yii::t('np', 'Mobile Country Code'); ?>:</small> <?= Html::encode($this->title) ?></h1>
 
 
     <?= DetailView::widget([

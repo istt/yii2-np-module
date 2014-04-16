@@ -5,7 +5,7 @@ use yii\widgets\DetailView;
 ?>
 <div class="network-destination-code-view">
 
-    <h1><small><?= \Yii::t('app', 'Network Destination Code'); ?>:</small> <?= Html::encode($this->title) ?></h1>
+    <h1><small><?= \Yii::t('np', 'Network Destination Code'); ?>:</small> <?= Html::encode($this->title) ?></h1>
 
 
     <?= DetailView::widget([

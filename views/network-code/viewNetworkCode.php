@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="network-code-view">
 
-    <h1><small><?= \Yii::t('app', 'Network Code'); ?>:</small> <?= Html::encode($this->title) ?></h1>
+    <h1><small><?= \Yii::t('np', 'Network Code'); ?>:</small> <?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a(Yii::t('np', 'Update'), ['update', 'operator_id' => $model->operator_id, 'mnc' => $model->mnc], ['class' => 'btn btn-primary']) ?>

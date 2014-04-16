@@ -5,7 +5,7 @@ use yii\widgets\DetailView;
 ?>
 <div class="country-view">
 
-    <h1><small><?= \Yii::t('app', 'Country'); ?>:</small> <?= Html::encode($this->title) ?></h1>
+    <h1><small><?= \Yii::t('np', 'Country'); ?>:</small> <?= Html::encode($this->title) ?></h1>
 
 
     <?= DetailView::widget([
