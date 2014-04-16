@@ -10,38 +10,44 @@ class m140415_093407_install extends \yii\db\Migration
     	if ($this->db->driverName === 'mysql') {
     		$tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
     	}
+    	// countries
     	$this->createTable('{{%countries}}',[
-    				'id' => Schema::TYPE_PK,
+    				'country_id' => Schema::TYPE_PK,
     				'country_name' => Schema::TYPE_STRING,
     				'country_name_short' => Schema::TYPE_STRING,
     			], $tableOptions);
+    	// country_cc
     	$this->createTable('{{%country_cc}}',[
     				'country_id' => Schema::TYPE_INTEGER,
     				'cc' => Schema::TYPE_STRING,
     			], $tableOptions);
-    	$this->addForeignKey('cc_country', '{{%country_cc}}', 'country_id', '{{%countries}}', 'id');
+    	$this->addForeignKey('cc_country', '{{%country_cc}}', 'country_id', '{{%countries}}', 'country_id');
+    	// country_mcc
     	$this->createTable('{{%country_mcc}}',[
     				'country_id' => Schema::TYPE_INTEGER,
     				'mcc' => Schema::TYPE_STRING,
     			], $tableOptions);
-    	$this->addForeignKey('mcc_country', '{{%country_mcc}}', 'country_id', '{{%countries}}', 'id');
+    	$this->addForeignKey('mcc_country', '{{%country_mcc}}', 'country_id', '{{%countries}}', 'country_id');
+    	// operators
     	$this->createTable('{{%operators}}',[
-    				'id' => Schema::TYPE_PK,
+    				'operator_id' => Schema::TYPE_PK,
     				'country_id' => Schema::TYPE_INTEGER,
     				'operator_name' => Schema::TYPE_STRING,
     				'operator_name_short' => Schema::TYPE_STRING,
     			], $tableOptions);
-    	$this->addForeignKey('op_country', '{{%operators}}', 'country_id', '{{%countries}}', 'id');
+    	$this->addForeignKey('op_country', '{{%operators}}', 'country_id', '{{%countries}}', 'country_id');
+    	// operator_mnc
     	$this->createTable('{{%operator_mnc}}',[
     				'operator_id' => Schema::TYPE_INTEGER,
     				'mnc' => Schema::TYPE_STRING,
     			], $tableOptions);
-    	$this->addForeignKey('mnc_operator', '{{%operator_mnc}}', 'operator_id', '{{%operators}}', 'id');
+    	$this->addForeignKey('mnc_operator', '{{%operator_mnc}}', 'operator_id', '{{%operators}}', 'operator_id');
+    	// operator_ndc
     	$this->createTable('{{%operator_ndc}}',[
     				'operator_id' => Schema::TYPE_INTEGER,
     				'ndc' => Schema::TYPE_STRING,
     			], $tableOptions);
-    	$this->addForeignKey('ndc_operator', '{{%operator_ndc}}', 'operator_id', '{{%operators}}', 'id');
+    	$this->addForeignKey('ndc_operator', '{{%operator_ndc}}', 'operator_id', '{{%operators}}', 'operator_id');
     }
 
     public function down()
