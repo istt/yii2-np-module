@@ -12,11 +12,9 @@ use Yii;
  * @property string $operator_name_short
  * @property integer $country_id
  *
- * @property OperatorMnc $operatorMnc
- * @property OperatorNdc $operatorNdc
+ * @property OperatorMnc $mnc
+ * @property OperatorNdc $ndc
  * @property Countries $country
- * @property OperatorsInList $operatorsInList
- * @property OperatorsLists[] $operatorLists
  */
 class NetworkOperator extends \yii\db\ActiveRecord
 {
@@ -86,6 +84,10 @@ class NetworkOperator extends \yii\db\ActiveRecord
     public function getCountry()
     {
         return $this->hasOne(Country::className(), ['country_id' => 'country_id']);
+    }
+
+    public function getMcc(){
+    	return $this->hasOne(MobileCountryCode::className(), ['country_id' => 'country_id'])->via('country');
     }
 
     public function __toString(){

@@ -29,12 +29,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+			['label' => 'IMSI', 'value' => function($data){ return $data['mcc'] . $data['mnc']; }],
+
+			'mcc.mcc',
+            'mnc.mnc',
 
             'operator_name',
             'operator_name_short',
-            'country.country_name',
-            'country.mcc',
-			'mnc',
+			// Related Attributes
+			'country.country_name',
+			'country.country_name_short',
+
+			'ndc.ndc',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
