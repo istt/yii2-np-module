@@ -10,17 +10,28 @@ use istt\np\models\Country;
 /**
  * CountrySearch represents the model behind the search form about `istt\np\models\Country`.
  */
-class CountrySearch extends Model
+class CountrySearch extends Country
 {
     public $country_id;
     public $country_name;
     public $country_name_short;
+
+    /** Add some related attributes **/
+    public function attributes()
+    {
+    	// add related fields to searchable attributes
+    	return array_merge(parent::attributes(), ['cc.cc', 'mcc.mcc']);
+    }
+
 
     public function rules()
     {
         return [
             [['country_id'], 'integer'],
             [['country_name', 'country_name_short'], 'safe'],
+
+            // Relation search support
+            [['cc.cc', 'mcc.mcc'], 'safe'],
         ];
     }
 
@@ -42,14 +53,28 @@ class CountrySearch extends Model
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+        $dataProvider->sort->attributes['cc.cc'] = [
+        	'asc' => ['cc' => SORT_ASC],
+        	'desc' => ['cc' => SORT_DESC],
+        ];
+        $dataProvider->sort->attributes['mcc.mcc'] = [
+        	'asc' => ['mcc' => SORT_ASC],
+        	'desc' => ['mcc' => SORT_DESC],
+        ];
+
+        $query->joinWith('cc');
+        $query->joinWith('mcc');
 
         if (!($this->load($params) && $this->validate())) {
             return $dataProvider;
         }
 
         $query->andFilterWhere([
-            'country_id' => $this->country_id,
-        ]);
+        	'country_id' => $this->country_id,
+	        // Enable search for relations
+	        'cc' => $this->getAttribute('cc.cc'),
+	        'mcc' => $this->getAttribute('mcc.mcc'),
+		]);
 
         $query->andFilterWhere(['like', 'country_name', $this->country_name])
             ->andFilterWhere(['like', 'country_name_short', $this->country_name_short]);

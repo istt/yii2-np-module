@@ -2,7 +2,7 @@
 
 namespace istt\np;
 
-class NumberingPlansModule extends \yii\base\Module
+class NpModule extends \yii\base\Module
 {
     public $controllerNamespace = 'istt\np\controllers';
 

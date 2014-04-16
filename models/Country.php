@@ -13,8 +13,8 @@ use Yii;
  *
  * @property CountriesInList $countriesInList
  * @property CountriesList[] $countryLists
- * @property CountryCc $countryCc
- * @property CountryMcc $countryMcc
+ * @property CountryCc $cc
+ * @property CountryMcc $mcc
  * @property Operators[] $operators
  */
 class Country extends \yii\db\ActiveRecord
