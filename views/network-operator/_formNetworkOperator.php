@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
+use kartik\widgets\Select2;
+use yii\helpers\ArrayHelper;
+use istt\np\models\Country;
 
 /**
  * @var yii\web\View $this
@@ -15,10 +18,9 @@ use kartik\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'country_id')->widget(Select2::className(), [
-				    'data' => ['' => '--- Select ---'],
+				    'data' => ['' => '--- Select ---'] + ArrayHelper::map(Country::find()->all(), 'country_id', 'country_name'),
 				    'options' => [
-				    	'placeholder' => 'Select a state ...',
-				    	'multiple' => TRUE,
+				    	'placeholder' => 'Select a country ...',
 				    ],
 				    'pluginOptions' => [
 				        'allowClear' => true

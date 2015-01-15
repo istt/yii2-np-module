@@ -97,4 +97,13 @@ class Country extends \yii\db\ActiveRecord
     public function __toString(){
     	return $this->country_name . ' - ' . $this->country_name_short;
     }
+
+    public function beforeDelete(){
+    	MobileCountryCode::deleteAll(['country_id' => $this->primaryKey]);
+    	CountryCode::deleteAll(['country_id' => $this->primaryKey]);
+    	foreach (NetworkOperator::findAll(['country_id' => $this->primaryKey]) as $network){
+    		$network->delete();
+    	}
+    	return parent::beforeDelete();
+    }
 }

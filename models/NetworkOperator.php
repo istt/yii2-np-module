@@ -93,4 +93,10 @@ class NetworkOperator extends \yii\db\ActiveRecord
     public function __toString(){
     	return $this->operator_name . ' - ' . $this->operator_name_short;
     }
+
+    public function beforeDelete(){
+    	NetworkCode::deleteAll(['operator_id' => $this->primaryKey]);
+    	NetworkDestinationCode::deleteAll(['operator_id' => $this->primaryKey]);
+    	return parent::beforeDelete();
+    }
 }
