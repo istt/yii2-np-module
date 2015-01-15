@@ -2,7 +2,7 @@
 	"name": "istt/yii2-np-module",
 	"description": "Quick Reference tools for MCC and MNC values, used in operators",
 	"keywords": ["istt", "ndtrung", "yii", "mcc", "mnc", "country"],
-	"type": "yii2-module",
+	"type": "yii2-extension",
 	"license": "MIT",
 	"authors": [
 		{
@@ -20,5 +20,8 @@
 		"psr-4": {
 			"istt\\np\\": ""
 		}
-	}
+	},
+	"extra": {
+        "bootstrap": "istt\\np\\Bootstrap"
+    }
 }

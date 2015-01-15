@@ -31,9 +31,9 @@ class m140415_093407_install extends \yii\db\Migration
     	// operators
     	$this->createTable('{{%operators}}',[
     				'operator_id' => Schema::TYPE_PK,
-    				'country_id' => Schema::TYPE_INTEGER,
     				'operator_name' => Schema::TYPE_STRING,
     				'operator_name_short' => Schema::TYPE_STRING,
+    				'country_id' => Schema::TYPE_INTEGER,
     			], $tableOptions);
     	$this->addForeignKey('op_country', '{{%operators}}', 'country_id', '{{%countries}}', 'country_id');
     	// operator_mnc

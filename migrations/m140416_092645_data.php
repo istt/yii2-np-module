@@ -10,7 +10,7 @@ class m140416_092645_data extends \yii\db\Migration
     	$this->loadCsv('cc.csv', ['country_id', 'cc'], '{{%country_cc}}');
     	$this->loadCsv('mcc.csv', ['country_id', 'mcc'], '{{%country_mcc}}');
 
-    	$this->loadCsv('operators.csv', ['operator_id', 'country_id', 'operator_name', 'operator_name_short'], '{{%operators}}');
+    	$this->loadCsv('operators.csv', ['operator_id', 'operator_name', 'operator_name_short', 'country_id'], '{{%operators}}');
     	$this->loadCsv('mnc.csv', ['operator_id', 'mnc'], '{{%operator_mnc}}');
     	$this->loadCsv('ndc.csv', ['operator_id', 'ndc'], '{{%operator_ndc}}');
     }
@@ -40,11 +40,11 @@ class m140416_092645_data extends \yii\db\Migration
 
     public function down()
     {
-	    	$this->truncateTable('{{%operator_mnc}}');
-	        $this->truncateTable('{{%operator_ndc}}');
-	    	$this->truncateTable('{{%country_mcc}}');
-	    	$this->truncateTable('{{%country_cc}}');
-	    	$this->truncateTable('{{%operators}}');
-	    	$this->truncateTable('{{%countries}}');
+// 	        $this->truncateTable('{{%operator_ndc}}');
+// 	    	$this->truncateTable('{{%country_mcc}}');
+// 	    	$this->truncateTable('{{%operator_mnc}}');
+// 	    	$this->truncateTable('{{%country_cc}}');
+// 	    	$this->truncateTable('{{%operators}}');
+// 	    	$this->truncateTable('{{%countries}}');
     }
 }
