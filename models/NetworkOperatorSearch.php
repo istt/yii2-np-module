@@ -3,7 +3,6 @@
 namespace istt\np\models;
 
 use Yii;
-use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use istt\np\models\NetworkOperator;
 
@@ -82,24 +81,5 @@ class NetworkOperatorSearch extends NetworkOperator
         ;
 
         return $dataProvider;
-    }
-
-    protected function addCondition($query, $attribute, $partialMatch = false)
-    {
-        if (($pos = strrpos($attribute, '.')) !== false) {
-            $modelAttribute = substr($attribute, $pos + 1);
-        } else {
-            $modelAttribute = $attribute;
-        }
-
-        $value = $this->$modelAttribute;
-        if (trim($value) === '') {
-            return;
-        }
-        if ($partialMatch) {
-            $query->andWhere(['like', $attribute, $value]);
-        } else {
-            $query->andWhere([$attribute => $value]);
-        }
     }
 }
